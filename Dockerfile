@@ -4,6 +4,7 @@ ARG LIBRDKAFKA_NAME="librdkafka"
 ARG LIBRDKAFKA_VER="0.11.6"
 
 
+
 # Install librdkafka
 RUN apk add --no-cache --virtual .fetch-deps \
       ca-certificates \
@@ -33,6 +34,7 @@ RUN apk add --no-cache --virtual .fetch-deps \
       --prefix=/usr && \
     make -j "$(getconf _NPROCESSORS_ONLN)" && \
     make install && \
+    ldconfig  && \
 \
     runDeps="$( \
       scanelf --needed --nobanner --recursive /usr/local \
