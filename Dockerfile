@@ -8,6 +8,7 @@ ARG LIBRDKAFKA_VER="0.11.6"
 RUN apk add --no-cache --virtual .fetch-deps \
       ca-certificates \
       openssl \
+      openssl-dev \
       tar && \
 \
     BUILD_DIR="$(mktemp -d)" && \
