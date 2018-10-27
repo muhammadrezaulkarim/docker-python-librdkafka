@@ -24,7 +24,6 @@ RUN apk add --no-cache --virtual .fetch-deps \
     apk add --no-cache --virtual .build-deps \
       bash \
       g++ \
-      libressl-dev \
       make \
       musl-dev \
       zlib-dev && \
