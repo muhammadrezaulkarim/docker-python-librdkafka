@@ -3,6 +3,8 @@ FROM python:3.6.2-alpine3.6
 ARG LIBRDKAFKA_NAME="librdkafka"
 ARG LIBRDKAFKA_VER="0.11.6"
 
+ENV LD_LIBRARY_PATH /usr/lib
+
 
 
 # Install librdkafka
@@ -10,6 +12,7 @@ RUN apk add --no-cache --virtual .fetch-deps \
       ca-certificates \
       openssl \
       openssl-dev \
+      libssl1.0 \
       tar && \
 \
     BUILD_DIR="$(mktemp -d)" && \
@@ -34,7 +37,6 @@ RUN apk add --no-cache --virtual .fetch-deps \
       --prefix=/usr && \
     make -j "$(getconf _NPROCESSORS_ONLN)" && \
     make install && \
-    ldconfig  && \
 \
     runDeps="$( \
       scanelf --needed --nobanner --recursive /usr/local \
