@@ -7,11 +7,7 @@ ARG LIBRDKAFKA_VER="0.11.6"
 # Install librdkafka
 RUN apk add --no-cache --virtual .fetch-deps \
       ca-certificates \
-      libcrypto1.0-1.0.2m-r0 \
-      libssl1.0-1.0.2m-r0 \
-      pkgconfig-0.25-r1 \
-      zlib-dev-1.2.11-r0 \
-      openssl-dev-1.0.2m-r0 \
+      openssl \
       tar && \
 \
     BUILD_DIR="$(mktemp -d)" && \
